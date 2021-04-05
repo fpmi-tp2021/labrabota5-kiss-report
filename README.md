@@ -1,14 +1,10 @@
-# Project Name
-*TODO*
+This is documentation for [labrabota5-gr14-1-kiss](https://github.com/fpmi-tp2021/labrabota5-gr14-1-kiss) based on [pandoc markdown template](https://github.com/lauritzsh/pandoc-markdown-template).
 
-# Description
-*TODO*
+# Report generation 
 
-# Installation
-*TODO*
+Pandoc is required to generate the report.
 
-# Usage 
-*TODO*
-
-# Contributing 
-*TODO*
+```
+$ cd doc/
+$ make
+```
