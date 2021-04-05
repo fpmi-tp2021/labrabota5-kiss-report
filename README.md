@@ -2,7 +2,7 @@ This is documentation for [labrabota5-gr14-1-kiss](https://github.com/fpmi-tp202
 
 # Report generation 
 
-Pandoc is required to generate the report.
+Pandoc and a tex distribution are required to generate the report.
 
 ```
 $ make
