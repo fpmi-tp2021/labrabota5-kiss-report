@@ -1,1 +1,7 @@
 markdown/report.md
+markdown/management.md
+markdown/design.md
+markdown/database.md
+markdown/integration.md
+markdown/development.md
+markdown/documentation.md
