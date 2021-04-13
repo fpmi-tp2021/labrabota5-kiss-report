@@ -10,3 +10,6 @@ typeset:
 	  --out          report.pdf   \
 	  --pdf-engine   xelatex      \
 	$(FILES)
+
+clean:
+	rm report.pdf
