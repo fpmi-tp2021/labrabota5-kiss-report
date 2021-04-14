@@ -1,5 +1,7 @@
 \section{Проектирование архитектуры БД и наполнение данными}
 
-\includepdf[pages=-]{data/vertabelo.pdf}
+Для проектирования базы использовалась платформа [*Vertabelo*](https://vertabelo.com/). База состоит из трёх таблиц: `Helicopters`, `Pilots` и `Flights`.
 
-TODO: вставить SQL-скрипты, наполняющие базу данными
+Ниже представлен отчёт, сгенерированный с помощью *Vertabelo*.
+
+\includepdf[pages=-]{data/vertabelo.pdf}
