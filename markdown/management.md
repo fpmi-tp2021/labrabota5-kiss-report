@@ -1,3 +1,6 @@
 \section{Менеджмент проекта в стиле KANBAN}
 
-TODO: вставить скрин github projects 
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{data/github-projects}
+  \caption*{\textit{Github Projects} использовался для управления задачами}
+\end{figure}
