@@ -8,13 +8,16 @@
 \subsection{Результаты запросов}
 
 - ```sql
-SELECT image FROM Helicopters WHERE number=1;
+SELECT image 
+FROM Helicopters 
+WHERE number=1;
 ```
 
 \includegraphics{data/print-image}
 
 - ```sql
-SELECT * FROM Helicopters;
+SELECT * 
+FROM Helicopters;
 ```
 
 ```
@@ -42,7 +45,8 @@ image = NULL
 ```
 
 - ```sql
-SELECT * FROM Pilots
+SELECT * 
+FROM Pilots
 ```
 
 ```
@@ -74,7 +78,8 @@ birthDATE = 03-03-1993
 ```
 
 - ```sql
-SELECT * FROM Flights;
+SELECT * 
+FROM Flights;
 ```
 
 ```
@@ -93,7 +98,13 @@ special = 0
 ```
 
 - ```sql
-SELECT Helicopters.brand, sum(Flights.hours)  FROM Helicopters INNER JOIN Flights ON Helicopters.number = Flights.helicopter_number WHERE Helicopters.last_overhaul < Flights.date GROUP BY Helicopters.brand;
+SELECT Helicopters.brand, 
+sum(Flights.hours)  
+FROM Helicopters 
+INNER JOIN Flights 
+ON Helicopters.number = Flights.helicopter_number 
+WHERE Helicopters.last_overhaul < Flights.date 
+GROUP BY Helicopters.brand;
 ```
 
 ```
@@ -110,7 +121,15 @@ sum(Flights.hours) = 0
 ```
 
 - ```sql
-SELECT Helicopters.brand, sum(Flights.hours), sum(Flights.quantity), Flights.id, Flights.date  FROM Helicopters INNER JOIN Flights ON Helicopters.number = Flights.helicopter_number GROUP BY Helicopters.brand;
+SELECT Helicopters.brand, 
+sum(Flights.hours), 
+sum(Flights.quantity), 
+Flights.id, 
+Flights.date  
+FROM Helicopters 
+INNER JOIN Flights 
+ON Helicopters.number = Flights.helicopter_number 
+GROUP BY Helicopters.brand;
 ```
 
 ```
@@ -154,7 +173,16 @@ date = 24-9-2011
 ```
 
 - ```sql
-SELECT Helicopters.brand, sum(Flights.hours), sum(Flights.quantity), sum(Flights.cost), COUNT(Flights.id) as Kolvo  FROM Helicopters INNER JOIN Flights ON Helicopters.number = Flights.helicopter_number WHERE Flights.special = 1 GROUP BY Helicopters.brand;
+SELECT Helicopters.brand, 
+sum(Flights.hours), 
+sum(Flights.quantity), 
+sum(Flights.cost), 
+COUNT(Flights.id) as Kolvo  
+FROM Helicopters 
+INNER JOIN Flights 
+ON Helicopters.number = Flights.helicopter_number 
+WHERE Flights.special = 1 
+GROUP BY Helicopters.brand;
 ```
 
 ```
@@ -174,7 +202,15 @@ Kolvo = 1
 ```
 
 - ```sql
-SELECT Helicopters.brand, sum(Flights.hours), sum(Flights.quantity), sum(Flights.cost), COUNT(Flights.id) as Kolvo  FROM Helicopters INNER JOIN Flights ON Helicopters.number = Flights.helicopter_number WHERE Flights.special = 0 GROUP BY Helicopters.brand;
+SELECT Helicopters.brand, 
+sum(Flights.hours), 
+sum(Flights.quantity), 
+sum(Flights.cost), 
+COUNT(Flights.id) as Kolvo  
+FROM Helicopters 
+INNER JOIN Flights 
+ON Helicopters.number = Flights.helicopter_number 
+WHERE Flights.special = 0 GROUP BY Helicopters.brand;
 ```
 
 ```
@@ -218,7 +254,24 @@ Kolvo = 1
 ```
 
 - ```sql
-select * from pilots inner join (select helicopters.number as hn, helicopters.brand from Helicopters inner join (select max(num_flights), sum(cost) as total, brand as b from (select count(Flights.id) as num_flights, Flights.cost as cost, Helicopters.brand as brand from Flights inner join Helicopters on Flights.helicopter_number = Helicopters.number group by brand)) on helicopters.brand = b) on pilots.helicopter_number = hn group by pilots.surname;
+SELECT * 
+FROM pilots 
+INNER JOIN (SELECT helicopters.number as hn, 
+helicopters.brand 
+FROM Helicopters 
+INNER JOIN (SELECT max(num_flights), 
+sum(cost) as total, 
+brand as b 
+FROM (SELECT count(Flights.id) as num_flights, 
+Flights.cost as cost, 
+Helicopters.brand as brand 
+FROM Flights 
+INNER JOIN Helicopters 
+ON Flights.helicopter_number = Helicopters.number 
+GROUP BY brand)) 
+ON helicopters.brand = b) 
+ON pilots.helicopter_number = hn 
+GROUP BY pilots.surname;
 ```
 
 ```
@@ -236,7 +289,23 @@ brand = MIG72
 ```
 
 - ```sql
-select Flights.date, Flights.weight, Flights.cost, h from flights inner join (select h,max(total) from (select sum(fc) as total, hn as h from (select Pilots.surname as s, sum(Flights.cost) as fc, Flights.helicopter_number as hn FROM Pilots INNER JOIN Flights ON Pilots.helicopter_number = Flights.helicopter_number GROUP BY Pilots.surname) GROUP BY hn)) ON flights.helicopter_number = h;
+SELECT Flights.date, 
+Flights.weight, 
+Flights.cost, 
+h 
+FROM flights 
+INNER JOIN (SELECT h,max(total) 
+FROM (SELECT sum(fc) as total, 
+hn as h 
+FROM (SELECT Pilots.surname as s, 
+sum(Flights.cost) as fc, 
+Flights.helicopter_number as hn 
+FROM Pilots 
+INNER JOIN Flights 
+ON Pilots.helicopter_number = Flights.helicopter_number 
+GROUP BY Pilots.surname) 
+GROUP BY hn)) 
+ON flights.helicopter_number = h;
 ```
 
 ```
@@ -259,8 +328,15 @@ h = 1
 ```
 
 - ```sql
-SELECT Flights.date, Flights.hours as Czasy, Flights.quantity as Kolvo, Flights.cost as Cena, Flights.special as Special  FROM Flights INNER JOIN
-Pilots ON Pilots.helicopter_number = Flights.helicopter_number WHERE Pilots.surname = 'Vasili';
+SELECT Flights.date, 
+Flights.hours as Czasy, 
+Flights.quantity as Kolvo, 
+Flights.cost as Cena, 
+Flights.special as Special  
+FROM Flights 
+INNER JOIN Pilots 
+ON Pilots.helicopter_number = Flights.helicopter_number 
+WHERE Pilots.surname = 'Vasili';
 ```
 
 ```
